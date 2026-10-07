@@ -1,53 +1,80 @@
-JTextField amountField;
-    JTextField sourceField;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
-    public Income() {
-        setTitle("Income");
-        setSize(400, 300);
+public class Menu extends JFrame {
+
+    public Menu() {
+
+        setTitle("Expense Management System");
+        setSize(500, 450);
         setLayout(new FlowLayout());
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JLabel title = new JLabel("ADD INCOME");
+        JLabel title = new JLabel("EXPENSE MANAGEMENT SYSTEM");
 
-        JLabel amount = new JLabel("Amount:");
-        JLabel source = new JLabel("Source:");
-
-        amountField = new JTextField(20);
-        sourceField = new JTextField(20);
-
-        JButton addButton = new JButton("Add Income");
+        JButton userButton = new JButton("User");
+        JButton categoryButton = new JButton("Category");
+        JButton incomeButton = new JButton("Income");
+        JButton expenseButton = new JButton("Expense");
+        JButton transactionButton = new JButton("Transaction");
+        JButton budgetButton = new JButton("Budget");
+        JButton reportButton = new JButton("Report");
 
         add(title);
-        add(amount);
-        add(amountField);
-        add(source);
-        add(sourceField);
-        add(addButton);
+        add(userButton);
+        add(categoryButton);
+        add(incomeButton);
+        add(expenseButton);
+        add(transactionButton);
+        add(budgetButton);
+        add(reportButton);
 
-        addButton.addActionListener(new ActionListener() {
+        userButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                new User();
+            }
+        });
 
-                if (amountField.getText().isEmpty()
-                        || sourceField.getText().isEmpty()) {
+        categoryButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Category();
+            }
+        });
 
-                    JOptionPane.showMessageDialog(
-                        Income.this,
-                        "Please enter all details."
-                    );
+        incomeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new IncomeManager();
+            }
+        });
 
-                } else {
+        expenseButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new ExpenseManager();
+            }
+        });
 
-                    JOptionPane.showMessageDialog(
-                        Income.this,
-                        "Income added successfully!"
-                    );
-                }
+        transactionButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Transaction();
+            }
+        });
+
+        budgetButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new BudgetManager();
+            }
+        });
+
+        reportButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Report();
             }
         });
 
         setVisible(true);
     }
-public static void main(String[] args) {
-        new Income();
+    public static void main(String[] args) {
+        new Menu();
     }
 }
